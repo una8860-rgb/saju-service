@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { CITIES, DEFAULT_CITY_ID, SIDO_LIST, findCity } from "@/lib/manseryeok/locations";
+import { CITIES, DEFAULT_CITY_ID, SIDO_LIST, cityLabel, findCity, lngCorrectionOf, searchCities } from "@/lib/manseryeok/locations";
 import type { CalendarType, Gender } from "@/lib/manseryeok/pillars";
 import { toQuery } from "@/lib/query";
 import { cx } from "@/lib/ui";
@@ -23,6 +23,10 @@ export function SajuForm() {
   const [cityId, setCityId] = useState(DEFAULT_CITY_ID);
   const [sido, setSido] = useState(findCity(DEFAULT_CITY_ID).sido);
   const [yajasi, setYajasi] = useState(false);
+  const [cityQuery, setCityQuery] = useState("");
+  const cityHits = useMemo(() => searchCities(cityQuery), [cityQuery]);
+  const city = findCity(cityId);
+  const pickCity = (id: string) => { const c = findCity(id); setSido(c.sido); setCityId(c.id); setCityQuery(""); };
 
   const maxDay = calendar === "solar" ? new Date(year, month, 0).getDate() : 30;
   const cities = useMemo(() => CITIES.filter((c) => c.sido === sido), [sido]);
@@ -65,12 +69,27 @@ export function SajuForm() {
         </div>
       </Field>
 
-      <Field label="태어난 곳" hint="경도에 따라 시각을 보정해요. 목록에 없으면 가까운 도시를 고르세요.">
+      <Field label="태어난 곳" hint="전국 시·군 단위로 경도에 맞춰 시각을 보정해요.">
+        <input value={cityQuery} onChange={(e) => setCityQuery(e.target.value)} placeholder="지역 검색 (예: 나주, 익산)"
+          className="mb-2 h-12 w-full rounded-xl bg-page px-4 text-[16px] outline-none focus:ring-2 focus:ring-accent" />
+        {cityQuery && (
+          <div className="mb-2 flex flex-wrap gap-1.5">
+            {cityHits.length ? cityHits.map((c) => (
+              <button key={c.id} type="button" onClick={() => pickCity(c.id)}
+                className="rounded-full bg-accent-soft px-3 py-1.5 text-[14px] font-semibold text-accent">
+                {cityLabel(c)}
+              </button>
+            )) : <span className="text-[13px] text-sub">검색 결과가 없어요. 아래에서 시/도를 골라 주세요.</span>}
+          </div>
+        )}
         <div className="grid grid-cols-2 gap-2">
           <Select value={sido} onChange={(v) => { setSido(v); setCityId(CITIES.find((c) => c.sido === v)!.id); }}
             options={SIDO_LIST.map((s) => [s, s])} />
           <Select value={cityId} onChange={setCityId} options={cities.map((c) => [c.id, c.name])} />
         </div>
+        <p className="mt-1.5 text-[13px] font-semibold text-accent">
+          {cityLabel(city)} · 동경 {city.lng.toFixed(2)}° · 시각 {lngCorrectionOf(city)}분 보정
+        </p>
       </Field>
 
       <details className="rounded-xl bg-page px-4 py-3 text-[14px]">

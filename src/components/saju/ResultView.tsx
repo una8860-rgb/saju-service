@@ -7,6 +7,7 @@ import { analyze, GROUPS } from "@/lib/analysis";
 import { interpret } from "@/lib/interpret";
 import { BRANCHES, ELEMENTS_KO, HOUR_NAMES, STEMS, STEMS_KO, ZODIAC, BRANCHES_KO } from "@/lib/manseryeok/constants";
 import { computeSaju } from "@/lib/manseryeok/pillars";
+import { cityLabel } from "@/lib/manseryeok/locations";
 import { fromQuery } from "@/lib/query";
 import { ELEMENT_STYLE, cx } from "@/lib/ui";
 import { Badge, Card, Chip, Notice, Prose } from "../ui/Card";
@@ -67,7 +68,7 @@ export function ResultView() {
         <dl className="mt-5 grid grid-cols-2 gap-2 text-[12px]">
           <Info k="양력" v={`${saju.solarDate.year}.${saju.solarDate.month}.${saju.solarDate.day}`} />
           <Info k="음력" v={`${saju.lunarDate.year}.${saju.lunarDate.month}.${saju.lunarDate.day}${saju.lunarDate.leap ? " (윤)" : ""}`} />
-          <Info k="출생지" v={`${saju.city.name}${saju.correction ? ` · 경도 ${signed(saju.correction.lngCorrection)}분` : ""}`} />
+          <Info k="출생지" v={`${cityLabel(saju.city)}${saju.correction ? ` · 경도 ${signed(saju.correction.lngCorrection)}분` : ""}`} />
           <Info k="보정 시각" v={saju.correction
             ? `${saju.correction.lmt} ${HOUR_NAMES[pillars.hour!.branch]}${saju.correction.dst ? " · 서머타임" : ""}`
             : "—"} />

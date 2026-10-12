@@ -8,7 +8,7 @@ import { Solar } from "lunar-javascript";
 import KoreanLunarCalendar from "korean-lunar-calendar";
 import { BRANCHES, STEMS, ganzhiIndex, isYangStem } from "./constants";
 import { fieldsAt, isDst, lmtOffsetMinutes, seoulOffsetMinutes, seoulWallToUtc } from "./timeCorrection";
-import { STANDARD_MERIDIAN, findCity, type City } from "./locations";
+import { findCity, lngCorrectionOf, type City } from "./locations";
 
 const MIN = 60_000;
 const BEIJING_OFFSET = 8 * 60;
@@ -153,7 +153,7 @@ export function computeSaju(input: SajuInput): Saju {
     correction = {
       tzOffset,
       dst: isDst(utc),
-      lngCorrection: Math.round((city.lng - STANDARD_MERIDIAN) * 4),
+      lngCorrection: lngCorrectionOf(city),
       total: Math.round(lng - tzOffset),
       lmt: `${pad(lmt.hour)}:${pad(lmt.minute)}`,
     };

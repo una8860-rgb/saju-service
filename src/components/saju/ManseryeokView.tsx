@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { analyze } from "@/lib/analysis";
 import { HOUR_NAMES } from "@/lib/manseryeok/constants";
-import { CITIES, DEFAULT_CITY_ID } from "@/lib/manseryeok/locations";
+import { CITIES, DEFAULT_CITY_ID, SIDO_LIST } from "@/lib/manseryeok/locations";
 import { computeSaju, surroundingJie } from "@/lib/manseryeok/pillars";
 import { seoulWallToUtc } from "@/lib/manseryeok/timeCorrection";
 import { Card, Notice } from "../ui/Card";
@@ -45,7 +45,11 @@ export function ManseryeokView() {
           <input type="time" value={time} onChange={(e) => setTime(e.target.value)} className={input} />
         </div>
         <select value={cityId} onChange={(e) => setCityId(e.target.value)} className={`${input} mt-2`}>
-          {CITIES.map((c) => <option key={c.id} value={c.id}>{c.sido === c.name ? c.name : `${c.sido} ${c.name}`}</option>)}
+          {SIDO_LIST.map((s) => (
+            <optgroup key={s} label={s}>
+              {CITIES.filter((c) => c.sido === s).map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </optgroup>
+          ))}
         </select>
       </Card>
 

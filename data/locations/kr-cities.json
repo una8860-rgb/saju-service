@@ -1,30 +1,1176 @@
 {
-  "_comment": "출생지 경도 보정용. 보정(분) = (경도 - 135) × 4. 좌표는 각 시청/도청 소재지 기준(소수 3자리 ≈ 1초 미만 오차).",
-  "standardMeridian": 135,
-  "default": "seoul",
-  "cities": [
-    { "id": "seoul",     "sido": "서울",  "name": "서울",   "lng": 126.978, "lat": 37.566 },
-    { "id": "incheon",   "sido": "인천",  "name": "인천",   "lng": 126.705, "lat": 37.456 },
-    { "id": "suwon",     "sido": "경기",  "name": "수원",   "lng": 127.029, "lat": 37.263 },
-    { "id": "chuncheon", "sido": "강원",  "name": "춘천",   "lng": 127.730, "lat": 37.881 },
-    { "id": "wonju",     "sido": "강원",  "name": "원주",   "lng": 127.920, "lat": 37.342 },
-    { "id": "gangneung", "sido": "강원",  "name": "강릉",   "lng": 128.876, "lat": 37.752 },
-    { "id": "cheongju",  "sido": "충북",  "name": "청주",   "lng": 127.489, "lat": 36.642 },
-    { "id": "cheonan",   "sido": "충남",  "name": "천안",   "lng": 127.114, "lat": 36.815 },
-    { "id": "daejeon",   "sido": "대전",  "name": "대전",   "lng": 127.385, "lat": 36.351 },
-    { "id": "sejong",    "sido": "세종",  "name": "세종",   "lng": 127.289, "lat": 36.480 },
-    { "id": "jeonju",    "sido": "전북",  "name": "전주",   "lng": 127.148, "lat": 35.824 },
-    { "id": "gwangju",   "sido": "광주",  "name": "광주",   "lng": 126.851, "lat": 35.160 },
-    { "id": "mokpo",     "sido": "전남",  "name": "목포",   "lng": 126.392, "lat": 34.812 },
-    { "id": "yeosu",     "sido": "전남",  "name": "여수",   "lng": 127.662, "lat": 34.760 },
-    { "id": "daegu",     "sido": "대구",  "name": "대구",   "lng": 128.601, "lat": 35.871 },
-    { "id": "andong",    "sido": "경북",  "name": "안동",   "lng": 128.729, "lat": 36.568 },
-    { "id": "pohang",    "sido": "경북",  "name": "포항",   "lng": 129.343, "lat": 36.019 },
-    { "id": "ulsan",     "sido": "울산",  "name": "울산",   "lng": 129.311, "lat": 35.539 },
-    { "id": "busan",     "sido": "부산",  "name": "부산",   "lng": 129.075, "lat": 35.180 },
-    { "id": "changwon",  "sido": "경남",  "name": "창원",   "lng": 128.682, "lat": 35.228 },
-    { "id": "jinju",     "sido": "경남",  "name": "진주",   "lng": 128.108, "lat": 35.180 },
-    { "id": "jeju",      "sido": "제주",  "name": "제주",   "lng": 126.531, "lat": 33.500 },
-    { "id": "seogwipo",  "sido": "제주",  "name": "서귀포", "lng": 126.560, "lat": 33.254 }
-  ]
+ "_comment": "출생지 경도 보정용. 보정(분) = (경도 - 135) × 4. 시·군: 통계청 2018 행정구역 경계의 면적 중심점, 광역시·특별시: 시청 좌표. 2023 군위군 대구 편입 반영.",
+ "standardMeridian": 135,
+ "default": "seoul",
+ "cities": [
+  {
+   "id": "seoul",
+   "sido": "서울",
+   "name": "서울특별시",
+   "lng": 126.978,
+   "lat": 37.566
+  },
+  {
+   "id": "busan",
+   "sido": "부산",
+   "name": "부산광역시",
+   "lng": 129.075,
+   "lat": 35.18
+  },
+  {
+   "id": "gijang-gun",
+   "sido": "부산",
+   "name": "기장군",
+   "lng": 129.201,
+   "lat": 35.298
+  },
+  {
+   "id": "daegu",
+   "sido": "대구",
+   "name": "대구광역시",
+   "lng": 128.601,
+   "lat": 35.871
+  },
+  {
+   "id": "dalseong-gun",
+   "sido": "대구",
+   "name": "달성군",
+   "lng": 128.498,
+   "lat": 35.76
+  },
+  {
+   "id": "gunwi-gun",
+   "sido": "대구",
+   "name": "군위군",
+   "lng": 128.648,
+   "lat": 36.17
+  },
+  {
+   "id": "incheon",
+   "sido": "인천",
+   "name": "인천광역시",
+   "lng": 126.705,
+   "lat": 37.456
+  },
+  {
+   "id": "ganghwa-gun",
+   "sido": "인천",
+   "name": "강화군",
+   "lng": 126.402,
+   "lat": 37.713
+  },
+  {
+   "id": "ongjin-gun",
+   "sido": "인천",
+   "name": "옹진군",
+   "lng": 125.667,
+   "lat": 37.523
+  },
+  {
+   "id": "gwangju",
+   "sido": "광주",
+   "name": "광주광역시",
+   "lng": 126.851,
+   "lat": 35.16
+  },
+  {
+   "id": "daejeon",
+   "sido": "대전",
+   "name": "대전광역시",
+   "lng": 127.385,
+   "lat": 36.351
+  },
+  {
+   "id": "ulsan",
+   "sido": "울산",
+   "name": "울산광역시",
+   "lng": 129.311,
+   "lat": 35.539
+  },
+  {
+   "id": "ulju-gun",
+   "sido": "울산",
+   "name": "울주군",
+   "lng": 129.188,
+   "lat": 35.546
+  },
+  {
+   "id": "sejong",
+   "sido": "세종",
+   "name": "세종특별자치시",
+   "lng": 127.289,
+   "lat": 36.48
+  },
+  {
+   "id": "suwon",
+   "sido": "경기",
+   "name": "수원시",
+   "lng": 127.008,
+   "lat": 37.28
+  },
+  {
+   "id": "seongnam",
+   "sido": "경기",
+   "name": "성남시",
+   "lng": 127.116,
+   "lat": 37.407
+  },
+  {
+   "id": "uijeongbu",
+   "sido": "경기",
+   "name": "의정부시",
+   "lng": 127.068,
+   "lat": 37.736
+  },
+  {
+   "id": "anyang",
+   "sido": "경기",
+   "name": "안양시",
+   "lng": 126.928,
+   "lat": 37.403
+  },
+  {
+   "id": "bucheon",
+   "sido": "경기",
+   "name": "부천시",
+   "lng": 126.789,
+   "lat": 37.504
+  },
+  {
+   "id": "gwangmyeong",
+   "sido": "경기",
+   "name": "광명시",
+   "lng": 126.865,
+   "lat": 37.445
+  },
+  {
+   "id": "pyeongtaek",
+   "sido": "경기",
+   "name": "평택시",
+   "lng": 126.993,
+   "lat": 37.015
+  },
+  {
+   "id": "dongducheon",
+   "sido": "경기",
+   "name": "동두천시",
+   "lng": 127.078,
+   "lat": 37.917
+  },
+  {
+   "id": "ansan",
+   "sido": "경기",
+   "name": "안산시",
+   "lng": 126.747,
+   "lat": 37.291
+  },
+  {
+   "id": "goyang",
+   "sido": "경기",
+   "name": "고양시",
+   "lng": 126.837,
+   "lat": 37.665
+  },
+  {
+   "id": "gwacheon",
+   "sido": "경기",
+   "name": "과천시",
+   "lng": 127.003,
+   "lat": 37.434
+  },
+  {
+   "id": "guri",
+   "sido": "경기",
+   "name": "구리시",
+   "lng": 127.131,
+   "lat": 37.599
+  },
+  {
+   "id": "namyangju",
+   "sido": "경기",
+   "name": "남양주시",
+   "lng": 127.244,
+   "lat": 37.663
+  },
+  {
+   "id": "osan",
+   "sido": "경기",
+   "name": "오산시",
+   "lng": 127.051,
+   "lat": 37.163
+  },
+  {
+   "id": "siheung",
+   "sido": "경기",
+   "name": "시흥시",
+   "lng": 126.784,
+   "lat": 37.386
+  },
+  {
+   "id": "gunpo",
+   "sido": "경기",
+   "name": "군포시",
+   "lng": 126.921,
+   "lat": 37.343
+  },
+  {
+   "id": "uiwang",
+   "sido": "경기",
+   "name": "의왕시",
+   "lng": 126.99,
+   "lat": 37.362
+  },
+  {
+   "id": "hanam",
+   "sido": "경기",
+   "name": "하남시",
+   "lng": 127.206,
+   "lat": 37.523
+  },
+  {
+   "id": "yongin",
+   "sido": "경기",
+   "name": "용인시",
+   "lng": 127.222,
+   "lat": 37.222
+  },
+  {
+   "id": "paju",
+   "sido": "경기",
+   "name": "파주시",
+   "lng": 126.81,
+   "lat": 37.856
+  },
+  {
+   "id": "icheon",
+   "sido": "경기",
+   "name": "이천시",
+   "lng": 127.481,
+   "lat": 37.21
+  },
+  {
+   "id": "anseong",
+   "sido": "경기",
+   "name": "안성시",
+   "lng": 127.303,
+   "lat": 37.035
+  },
+  {
+   "id": "gimpo",
+   "sido": "경기",
+   "name": "김포시",
+   "lng": 126.626,
+   "lat": 37.682
+  },
+  {
+   "id": "hwaseong",
+   "sido": "경기",
+   "name": "화성시",
+   "lng": 126.859,
+   "lat": 37.164
+  },
+  {
+   "id": "gwangju-gg",
+   "sido": "경기",
+   "name": "광주시",
+   "lng": 127.301,
+   "lat": 37.403
+  },
+  {
+   "id": "yangju",
+   "sido": "경기",
+   "name": "양주시",
+   "lng": 127.001,
+   "lat": 37.809
+  },
+  {
+   "id": "pocheon",
+   "sido": "경기",
+   "name": "포천시",
+   "lng": 127.25,
+   "lat": 37.97
+  },
+  {
+   "id": "yeoju",
+   "sido": "경기",
+   "name": "여주시",
+   "lng": 127.616,
+   "lat": 37.302
+  },
+  {
+   "id": "yeoncheon-gun",
+   "sido": "경기",
+   "name": "연천군",
+   "lng": 127.024,
+   "lat": 38.097
+  },
+  {
+   "id": "gapyeong-gun",
+   "sido": "경기",
+   "name": "가평군",
+   "lng": 127.45,
+   "lat": 37.819
+  },
+  {
+   "id": "yangpyeong-gun",
+   "sido": "경기",
+   "name": "양평군",
+   "lng": 127.579,
+   "lat": 37.518
+  },
+  {
+   "id": "chuncheon",
+   "sido": "강원",
+   "name": "춘천시",
+   "lng": 127.74,
+   "lat": 37.89
+  },
+  {
+   "id": "wonju",
+   "sido": "강원",
+   "name": "원주시",
+   "lng": 127.93,
+   "lat": 37.308
+  },
+  {
+   "id": "gangneung",
+   "sido": "강원",
+   "name": "강릉시",
+   "lng": 128.832,
+   "lat": 37.709
+  },
+  {
+   "id": "donghae",
+   "sido": "강원",
+   "name": "동해시",
+   "lng": 129.056,
+   "lat": 37.507
+  },
+  {
+   "id": "taebaek",
+   "sido": "강원",
+   "name": "태백시",
+   "lng": 128.98,
+   "lat": 37.172
+  },
+  {
+   "id": "sokcho",
+   "sido": "강원",
+   "name": "속초시",
+   "lng": 128.52,
+   "lat": 38.176
+  },
+  {
+   "id": "samcheok",
+   "sido": "강원",
+   "name": "삼척시",
+   "lng": 129.122,
+   "lat": 37.278
+  },
+  {
+   "id": "hongcheon-gun",
+   "sido": "강원",
+   "name": "홍천군",
+   "lng": 128.074,
+   "lat": 37.745
+  },
+  {
+   "id": "hoengseong-gun",
+   "sido": "강원",
+   "name": "횡성군",
+   "lng": 128.077,
+   "lat": 37.509
+  },
+  {
+   "id": "yeongwol-gun",
+   "sido": "강원",
+   "name": "영월군",
+   "lng": 128.5,
+   "lat": 37.204
+  },
+  {
+   "id": "pyeongchang-gun",
+   "sido": "강원",
+   "name": "평창군",
+   "lng": 128.483,
+   "lat": 37.557
+  },
+  {
+   "id": "jeongseon-gun",
+   "sido": "강원",
+   "name": "정선군",
+   "lng": 128.739,
+   "lat": 37.379
+  },
+  {
+   "id": "cheorwon-gun",
+   "sido": "강원",
+   "name": "철원군",
+   "lng": 127.414,
+   "lat": 38.244
+  },
+  {
+   "id": "hwacheon-gun",
+   "sido": "강원",
+   "name": "화천군",
+   "lng": 127.685,
+   "lat": 38.138
+  },
+  {
+   "id": "yanggu-gun",
+   "sido": "강원",
+   "name": "양구군",
+   "lng": 128.001,
+   "lat": 38.178
+  },
+  {
+   "id": "inje-gun",
+   "sido": "강원",
+   "name": "인제군",
+   "lng": 128.263,
+   "lat": 38.069
+  },
+  {
+   "id": "goseong-gun",
+   "sido": "강원",
+   "name": "고성군",
+   "lng": 128.4,
+   "lat": 38.377
+  },
+  {
+   "id": "yangyang-gun",
+   "sido": "강원",
+   "name": "양양군",
+   "lng": 128.595,
+   "lat": 38.005
+  },
+  {
+   "id": "chungju",
+   "sido": "충북",
+   "name": "충주시",
+   "lng": 127.896,
+   "lat": 37.015
+  },
+  {
+   "id": "jecheon",
+   "sido": "충북",
+   "name": "제천시",
+   "lng": 128.141,
+   "lat": 37.06
+  },
+  {
+   "id": "cheongju",
+   "sido": "충북",
+   "name": "청주시",
+   "lng": 127.499,
+   "lat": 36.627
+  },
+  {
+   "id": "boeun-gun",
+   "sido": "충북",
+   "name": "보은군",
+   "lng": 127.729,
+   "lat": 36.49
+  },
+  {
+   "id": "okcheon-gun",
+   "sido": "충북",
+   "name": "옥천군",
+   "lng": 127.657,
+   "lat": 36.32
+  },
+  {
+   "id": "yeongdong-gun",
+   "sido": "충북",
+   "name": "영동군",
+   "lng": 127.814,
+   "lat": 36.16
+  },
+  {
+   "id": "jincheon-gun",
+   "sido": "충북",
+   "name": "진천군",
+   "lng": 127.44,
+   "lat": 36.871
+  },
+  {
+   "id": "goesan-gun",
+   "sido": "충북",
+   "name": "괴산군",
+   "lng": 127.83,
+   "lat": 36.77
+  },
+  {
+   "id": "eumseong-gun",
+   "sido": "충북",
+   "name": "음성군",
+   "lng": 127.614,
+   "lat": 36.976
+  },
+  {
+   "id": "danyang-gun",
+   "sido": "충북",
+   "name": "단양군",
+   "lng": 128.388,
+   "lat": 36.995
+  },
+  {
+   "id": "jeungpyeong-gun",
+   "sido": "충북",
+   "name": "증평군",
+   "lng": 127.605,
+   "lat": 36.787
+  },
+  {
+   "id": "cheonan",
+   "sido": "충남",
+   "name": "천안시",
+   "lng": 127.203,
+   "lat": 36.804
+  },
+  {
+   "id": "gongju",
+   "sido": "충남",
+   "name": "공주시",
+   "lng": 127.075,
+   "lat": 36.48
+  },
+  {
+   "id": "boryeong",
+   "sido": "충남",
+   "name": "보령시",
+   "lng": 126.591,
+   "lat": 36.34
+  },
+  {
+   "id": "asan",
+   "sido": "충남",
+   "name": "아산시",
+   "lng": 126.98,
+   "lat": 36.807
+  },
+  {
+   "id": "seosan",
+   "sido": "충남",
+   "name": "서산시",
+   "lng": 126.463,
+   "lat": 36.785
+  },
+  {
+   "id": "nonsan",
+   "sido": "충남",
+   "name": "논산시",
+   "lng": 127.158,
+   "lat": 36.191
+  },
+  {
+   "id": "gyeryong",
+   "sido": "충남",
+   "name": "계룡시",
+   "lng": 127.234,
+   "lat": 36.292
+  },
+  {
+   "id": "dangjin",
+   "sido": "충남",
+   "name": "당진시",
+   "lng": 126.652,
+   "lat": 36.904
+  },
+  {
+   "id": "geumsan-gun",
+   "sido": "충남",
+   "name": "금산군",
+   "lng": 127.478,
+   "lat": 36.119
+  },
+  {
+   "id": "buyeo-gun",
+   "sido": "충남",
+   "name": "부여군",
+   "lng": 126.857,
+   "lat": 36.246
+  },
+  {
+   "id": "seocheon-gun",
+   "sido": "충남",
+   "name": "서천군",
+   "lng": 126.704,
+   "lat": 36.107
+  },
+  {
+   "id": "cheongyang-gun",
+   "sido": "충남",
+   "name": "청양군",
+   "lng": 126.853,
+   "lat": 36.431
+  },
+  {
+   "id": "hongseong-gun",
+   "sido": "충남",
+   "name": "홍성군",
+   "lng": 126.626,
+   "lat": 36.57
+  },
+  {
+   "id": "yesan-gun",
+   "sido": "충남",
+   "name": "예산군",
+   "lng": 126.784,
+   "lat": 36.671
+  },
+  {
+   "id": "taean-gun",
+   "sido": "충남",
+   "name": "태안군",
+   "lng": 126.279,
+   "lat": 36.707
+  },
+  {
+   "id": "jeonju",
+   "sido": "전북",
+   "name": "전주시",
+   "lng": 127.116,
+   "lat": 35.828
+  },
+  {
+   "id": "gunsan",
+   "sido": "전북",
+   "name": "군산시",
+   "lng": 126.719,
+   "lat": 35.949
+  },
+  {
+   "id": "iksan",
+   "sido": "전북",
+   "name": "익산시",
+   "lng": 126.989,
+   "lat": 36.023
+  },
+  {
+   "id": "jeongeup",
+   "sido": "전북",
+   "name": "정읍시",
+   "lng": 126.906,
+   "lat": 35.603
+  },
+  {
+   "id": "namwon",
+   "sido": "전북",
+   "name": "남원시",
+   "lng": 127.442,
+   "lat": 35.423
+  },
+  {
+   "id": "gimje",
+   "sido": "전북",
+   "name": "김제시",
+   "lng": 126.896,
+   "lat": 35.807
+  },
+  {
+   "id": "wanju-gun",
+   "sido": "전북",
+   "name": "완주군",
+   "lng": 127.215,
+   "lat": 35.919
+  },
+  {
+   "id": "jinan-gun",
+   "sido": "전북",
+   "name": "진안군",
+   "lng": 127.43,
+   "lat": 35.829
+  },
+  {
+   "id": "muju-gun",
+   "sido": "전북",
+   "name": "무주군",
+   "lng": 127.713,
+   "lat": 35.939
+  },
+  {
+   "id": "jangsu-gun",
+   "sido": "전북",
+   "name": "장수군",
+   "lng": 127.544,
+   "lat": 35.658
+  },
+  {
+   "id": "imsil-gun",
+   "sido": "전북",
+   "name": "임실군",
+   "lng": 127.237,
+   "lat": 35.598
+  },
+  {
+   "id": "sunchang-gun",
+   "sido": "전북",
+   "name": "순창군",
+   "lng": 127.09,
+   "lat": 35.434
+  },
+  {
+   "id": "gochang-gun",
+   "sido": "전북",
+   "name": "고창군",
+   "lng": 126.616,
+   "lat": 35.449
+  },
+  {
+   "id": "buan-gun",
+   "sido": "전북",
+   "name": "부안군",
+   "lng": 126.642,
+   "lat": 35.678
+  },
+  {
+   "id": "mokpo",
+   "sido": "전남",
+   "name": "목포시",
+   "lng": 126.39,
+   "lat": 34.803
+  },
+  {
+   "id": "yeosu",
+   "sido": "전남",
+   "name": "여수시",
+   "lng": 127.652,
+   "lat": 34.695
+  },
+  {
+   "id": "suncheon",
+   "sido": "전남",
+   "name": "순천시",
+   "lng": 127.389,
+   "lat": 34.995
+  },
+  {
+   "id": "naju",
+   "sido": "전남",
+   "name": "나주시",
+   "lng": 126.72,
+   "lat": 34.989
+  },
+  {
+   "id": "gwangyang",
+   "sido": "전남",
+   "name": "광양시",
+   "lng": 127.656,
+   "lat": 35.019
+  },
+  {
+   "id": "damyang-gun",
+   "sido": "전남",
+   "name": "담양군",
+   "lng": 126.995,
+   "lat": 35.292
+  },
+  {
+   "id": "gokseong-gun",
+   "sido": "전남",
+   "name": "곡성군",
+   "lng": 127.264,
+   "lat": 35.217
+  },
+  {
+   "id": "gurye-gun",
+   "sido": "전남",
+   "name": "구례군",
+   "lng": 127.503,
+   "lat": 35.237
+  },
+  {
+   "id": "goheung-gun",
+   "sido": "전남",
+   "name": "고흥군",
+   "lng": 127.315,
+   "lat": 34.598
+  },
+  {
+   "id": "boseong-gun",
+   "sido": "전남",
+   "name": "보성군",
+   "lng": 127.163,
+   "lat": 34.814
+  },
+  {
+   "id": "hwasun-gun",
+   "sido": "전남",
+   "name": "화순군",
+   "lng": 127.034,
+   "lat": 35.008
+  },
+  {
+   "id": "jangheung-gun",
+   "sido": "전남",
+   "name": "장흥군",
+   "lng": 126.922,
+   "lat": 34.675
+  },
+  {
+   "id": "gangjin-gun",
+   "sido": "전남",
+   "name": "강진군",
+   "lng": 126.772,
+   "lat": 34.62
+  },
+  {
+   "id": "haenam-gun",
+   "sido": "전남",
+   "name": "해남군",
+   "lng": 126.511,
+   "lat": 34.559
+  },
+  {
+   "id": "yeongam-gun",
+   "sido": "전남",
+   "name": "영암군",
+   "lng": 126.626,
+   "lat": 34.797
+  },
+  {
+   "id": "muan-gun",
+   "sido": "전남",
+   "name": "무안군",
+   "lng": 126.425,
+   "lat": 34.954
+  },
+  {
+   "id": "hampyeong-gun",
+   "sido": "전남",
+   "name": "함평군",
+   "lng": 126.535,
+   "lat": 35.113
+  },
+  {
+   "id": "yeonggwang-gun",
+   "sido": "전남",
+   "name": "영광군",
+   "lng": 126.45,
+   "lat": 35.279
+  },
+  {
+   "id": "jangseong-gun",
+   "sido": "전남",
+   "name": "장성군",
+   "lng": 126.769,
+   "lat": 35.33
+  },
+  {
+   "id": "wando-gun",
+   "sido": "전남",
+   "name": "완도군",
+   "lng": 126.778,
+   "lat": 34.295
+  },
+  {
+   "id": "jindo-gun",
+   "sido": "전남",
+   "name": "진도군",
+   "lng": 126.211,
+   "lat": 34.437
+  },
+  {
+   "id": "sinan-gun",
+   "sido": "전남",
+   "name": "신안군",
+   "lng": 126.042,
+   "lat": 34.81
+  },
+  {
+   "id": "pohang",
+   "sido": "경북",
+   "name": "포항시",
+   "lng": 129.305,
+   "lat": 36.093
+  },
+  {
+   "id": "gyeongju",
+   "sido": "경북",
+   "name": "경주시",
+   "lng": 129.236,
+   "lat": 35.827
+  },
+  {
+   "id": "gimcheon",
+   "sido": "경북",
+   "name": "김천시",
+   "lng": 128.078,
+   "lat": 36.061
+  },
+  {
+   "id": "andong",
+   "sido": "경북",
+   "name": "안동시",
+   "lng": 128.78,
+   "lat": 36.58
+  },
+  {
+   "id": "gumi",
+   "sido": "경북",
+   "name": "구미시",
+   "lng": 128.355,
+   "lat": 36.207
+  },
+  {
+   "id": "yeongju",
+   "sido": "경북",
+   "name": "영주시",
+   "lng": 128.598,
+   "lat": 36.871
+  },
+  {
+   "id": "yeongcheon",
+   "sido": "경북",
+   "name": "영천시",
+   "lng": 128.943,
+   "lat": 36.016
+  },
+  {
+   "id": "sangju",
+   "sido": "경북",
+   "name": "상주시",
+   "lng": 128.067,
+   "lat": 36.43
+  },
+  {
+   "id": "mungyeong",
+   "sido": "경북",
+   "name": "문경시",
+   "lng": 128.149,
+   "lat": 36.691
+  },
+  {
+   "id": "gyeongsan",
+   "sido": "경북",
+   "name": "경산시",
+   "lng": 128.809,
+   "lat": 35.834
+  },
+  {
+   "id": "uiseong-gun",
+   "sido": "경북",
+   "name": "의성군",
+   "lng": 128.615,
+   "lat": 36.362
+  },
+  {
+   "id": "cheongsong-gun",
+   "sido": "경북",
+   "name": "청송군",
+   "lng": 129.057,
+   "lat": 36.357
+  },
+  {
+   "id": "yeongyang-gun",
+   "sido": "경북",
+   "name": "영양군",
+   "lng": 129.145,
+   "lat": 36.696
+  },
+  {
+   "id": "yeongdeok-gun",
+   "sido": "경북",
+   "name": "영덕군",
+   "lng": 129.318,
+   "lat": 36.482
+  },
+  {
+   "id": "cheongdo-gun",
+   "sido": "경북",
+   "name": "청도군",
+   "lng": 128.787,
+   "lat": 35.673
+  },
+  {
+   "id": "goryeong-gun",
+   "sido": "경북",
+   "name": "고령군",
+   "lng": 128.307,
+   "lat": 35.737
+  },
+  {
+   "id": "seongju-gun",
+   "sido": "경북",
+   "name": "성주군",
+   "lng": 128.233,
+   "lat": 35.907
+  },
+  {
+   "id": "chilgok-gun",
+   "sido": "경북",
+   "name": "칠곡군",
+   "lng": 128.463,
+   "lat": 36.015
+  },
+  {
+   "id": "yecheon-gun",
+   "sido": "경북",
+   "name": "예천군",
+   "lng": 128.422,
+   "lat": 36.654
+  },
+  {
+   "id": "bonghwa-gun",
+   "sido": "경북",
+   "name": "봉화군",
+   "lng": 128.913,
+   "lat": 36.934
+  },
+  {
+   "id": "uljin-gun",
+   "sido": "경북",
+   "name": "울진군",
+   "lng": 129.312,
+   "lat": 36.904
+  },
+  {
+   "id": "ulleung-gun",
+   "sido": "경북",
+   "name": "울릉군",
+   "lng": 130.864,
+   "lat": 37.502
+  },
+  {
+   "id": "jinju",
+   "sido": "경남",
+   "name": "진주시",
+   "lng": 128.13,
+   "lat": 35.205
+  },
+  {
+   "id": "tongyeong",
+   "sido": "경남",
+   "name": "통영시",
+   "lng": 128.374,
+   "lat": 34.825
+  },
+  {
+   "id": "sacheon",
+   "sido": "경남",
+   "name": "사천시",
+   "lng": 128.037,
+   "lat": 35.049
+  },
+  {
+   "id": "gimhae",
+   "sido": "경남",
+   "name": "김해시",
+   "lng": 128.845,
+   "lat": 35.272
+  },
+  {
+   "id": "miryang",
+   "sido": "경남",
+   "name": "밀양시",
+   "lng": 128.79,
+   "lat": 35.499
+  },
+  {
+   "id": "geoje",
+   "sido": "경남",
+   "name": "거제시",
+   "lng": 128.623,
+   "lat": 34.87
+  },
+  {
+   "id": "yangsan",
+   "sido": "경남",
+   "name": "양산시",
+   "lng": 129.041,
+   "lat": 35.402
+  },
+  {
+   "id": "changwon",
+   "sido": "경남",
+   "name": "창원시",
+   "lng": 128.6,
+   "lat": 35.202
+  },
+  {
+   "id": "uiryeong-gun",
+   "sido": "경남",
+   "name": "의령군",
+   "lng": 128.277,
+   "lat": 35.392
+  },
+  {
+   "id": "haman-gun",
+   "sido": "경남",
+   "name": "함안군",
+   "lng": 128.431,
+   "lat": 35.291
+  },
+  {
+   "id": "changnyeong-gun",
+   "sido": "경남",
+   "name": "창녕군",
+   "lng": 128.493,
+   "lat": 35.508
+  },
+  {
+   "id": "goseong-gun-gn",
+   "sido": "경남",
+   "name": "고성군",
+   "lng": 128.291,
+   "lat": 35.016
+  },
+  {
+   "id": "namhae-gun",
+   "sido": "경남",
+   "name": "남해군",
+   "lng": 127.942,
+   "lat": 34.818
+  },
+  {
+   "id": "hadong-gun",
+   "sido": "경남",
+   "name": "하동군",
+   "lng": 127.779,
+   "lat": 35.137
+  },
+  {
+   "id": "sancheong-gun",
+   "sido": "경남",
+   "name": "산청군",
+   "lng": 127.884,
+   "lat": 35.369
+  },
+  {
+   "id": "hamyang-gun",
+   "sido": "경남",
+   "name": "함양군",
+   "lng": 127.722,
+   "lat": 35.552
+  },
+  {
+   "id": "geochang-gun",
+   "sido": "경남",
+   "name": "거창군",
+   "lng": 127.904,
+   "lat": 35.733
+  },
+  {
+   "id": "hapcheon-gun",
+   "sido": "경남",
+   "name": "합천군",
+   "lng": 128.142,
+   "lat": 35.577
+  },
+  {
+   "id": "jeju",
+   "sido": "제주",
+   "name": "제주시",
+   "lng": 126.529,
+   "lat": 33.443
+  },
+  {
+   "id": "seogwipo",
+   "sido": "제주",
+   "name": "서귀포시",
+   "lng": 126.581,
+   "lat": 33.324
+  }
+ ]
 }

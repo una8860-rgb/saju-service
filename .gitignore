@@ -13,3 +13,5 @@ docs/design/reference/
 .DS_Store
 Thumbs.db
 __pycache__/
+next-env.d.ts
+*.tsbuildinfo

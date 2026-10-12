@@ -1,6 +1,6 @@
 # 사주 운세 서비스 계획서 (초안)
 
-> 작성일: 2026-10-12 · 상태: 기획 단계
+> 작성일: 2026-10-12 · 상태: **MVP 배포 완료** — https://una8860-rgb.github.io/saju-service/
 
 ## 1. 서비스 개요
 
@@ -107,10 +107,10 @@
 
 | 영역 | 선택 | 이유 |
 |---|---|---|
-| 프레임워크 | Next.js (App Router) + TypeScript | 결과 페이지 SEO, API 라우트 같이 운영 |
+| 프레임워크 | Next.js (App Router, 정적 export) + TypeScript | GitHub Pages 배포, 계산은 브라우저에서 |
 | 스타일 | Tailwind CSS + `styles/tokens.css` | 오행 컬러·카드 스타일 토큰화 |
-| 만세력 | `lunar-javascript` + 자체 보정 레이어 | 절기·간지 계산 검증된 라이브러리, 한국 시간 보정은 직접 구현 |
-| 차트 | Recharts (레이더·라인·막대) | 가벼움, React 친화 |
+| 만세력 | `lunar-javascript`(절기·간지) + `korean-lunar-calendar`(한국 음력) + Intl `Asia/Seoul`(서머타임·표준시 이력) | 한국 시간 보정은 직접 구현 |
+| 차트 | 직접 그린 SVG (레이더·곡선·막대) | 의존성 없이 디자인 토큰 그대로 적용 |
 | 테스트 | Vitest | 만세력 경계 케이스 대량 검증 |
 
 ## 8. 일정 (단계별)

@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* 디자인 토큰 — docs/PLAN.md 4장 (점신식 흰 카드 + Canva 레퍼런스 남색 + 오행 색) */
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+
+  --color-page: #f2f4f6;
+  --color-card: #ffffff;
+  --color-ink: #191f28;
+  --color-sub: #6b7684;
+  --color-faint: #b0b8c1;
+  --color-line: #e5e8eb;
+  --color-accent: #3182f6;
+  --color-accent-soft: #e8f3ff;
+  --color-navy: #2e3a8c;
+  --color-navy-deep: #232c6e;
+  --color-badge: #ffe066;
+  --color-brown: #5a4033;
+
+  /* 오행 */
+  --color-wood: #3fa66b;
+  --color-wood-soft: #e5f5eb;
+  --color-fire: #ef5b5b;
+  --color-fire-soft: #fdecec;
+  --color-earth: #d99a1e;
+  --color-earth-soft: #fbf2dc;
+  --color-metal: #7d8799;
+  --color-metal-soft: #eef0f4;
+  --color-water: #2f4a8a;
+  --color-water-soft: #e4e9f5;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  word-break: keep-all;
+}
+
+select, input, button { font: inherit; }
+
+.scroll-x { overflow-x: auto; scrollbar-width: none; }
+.scroll-x::-webkit-scrollbar { display: none; }

@@ -1,10 +1,25 @@
-# saju-service
+# 사주그림 (saju-service)
 
-만세력 기반 사주풀이 서비스. 기획 내용은 [docs/PLAN.md](docs/PLAN.md), 만세력 계산 규칙은 [docs/manseryeok/SPEC.md](docs/manseryeok/SPEC.md)에 있다.
+출생지 경도·절입 시각까지 반영한 만세력으로 사주 원국, 오행, 대운을 그림과 차트로 풀어 주는 서비스.
 
-- 12띠 일러스트 미리보기: [docs/design/preview/zodiac.html](https://una8860-rgb.github.io/saju-service/docs/design/preview/zodiac.html)
+- **사이트**: https://una8860-rgb.github.io/saju-service/
+- 기획: [docs/PLAN.md](docs/PLAN.md) · 만세력 계산 규칙: [docs/manseryeok/SPEC.md](docs/manseryeok/SPEC.md) · 일러스트 가이드: [docs/design/ILLUSTRATION.md](docs/design/ILLUSTRATION.md)
 
-## 폴더 구조
+## 실행
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm test        # 만세력·분석 테스트 (vitest)
+npm run build   # 정적 사이트 → out/
+npm run illust  # 12띠 SVG 다시 생성 (python)
+```
+
+`main`에 push하면 GitHub Actions가 테스트 → 빌드 → GitHub Pages 배포를 자동으로 한다 (`.github/workflows/deploy.yml`).
+
+## 구조
+
+정적 호스팅(GitHub Pages)이라 서버가 없다. 입력값은 URL 파라미터로 넘기고, 계산은 모두 브라우저에서 한다.
 
 ```
 saju-service/
@@ -13,70 +28,51 @@ saju-service/
 │  ├─ manseryeok/SPEC.md         만세력 계산 규칙 & 검증 계획
 │  └─ design/
 │     ├─ ILLUSTRATION.md         일러스트 스타일 가이드
-│     ├─ reference/              레퍼런스 캡처 (로컬 전용, git 제외)
-│     └─ wireframes/             화면 와이어프레임
+│     ├─ preview/zodiac.html     12띠 일러스트 미리보기
+│     └─ reference/              레퍼런스 캡처 (로컬 전용, git 제외)
 │
-├─ public/                       정적 리소스 (그림 요소)
-│  ├─ images/
-│  │  ├─ zodiac/                 12띠 캐릭터
-│  │  ├─ ohaeng/                 오행(木火土金水) 아이콘
-│  │  ├─ ilju/                   일간 10종 → 60일주 캐릭터
-│  │  ├─ icons/menu/             홈 메뉴 라인 아이콘
-│  │  ├─ icons/fortune/          재물·애정·건강·직업 테마 아이콘
-│  │  ├─ banners/                홈 배너
-│  │  └─ share/                  공유 카드 배경
-│  └─ fonts/
+├─ public/images/zodiac/         12띠 얼굴 SVG
 │
 ├─ src/
-│  ├─ app/                       페이지 (Next.js App Router)
+│  ├─ app/                       페이지 (Next.js App Router, 정적 export)
+│  │  ├─ page.tsx                홈
 │  │  ├─ saju/                   사주 입력 폼
 │  │  │  └─ result/              평생사주 결과 (카드 10종)
-│  │  ├─ manseryeok/             만세력 조회
-│  │  ├─ today/                  오늘의 운세 (2차)
-│  │  ├─ gunghap/                궁합 (2차)
-│  │  └─ api/saju/               사주 계산 API
+│  │  └─ manseryeok/             만세력 조회
 │  │
 │  ├─ components/
-│  │  ├─ layout/                 AppShell(PC 좌측 패널 + 중앙 앱 컬럼), Header, BottomNav
-│  │  ├─ ui/                     Card, SectionHeader, Badge, IconGrid, ListRow, ScoreGauge
-│  │  ├─ saju/                   SajuTable, GanjiChip, IljuCard, DaeunTimeline
-│  │  ├─ charts/                 OhaengRadar, FortuneCurve, StrengthBars, MonthHeatmap
-│  │  └─ illust/                 ZodiacAvatar 등 일러스트 래퍼
+│  │  ├─ layout/                 AppShell (PC 좌측 패널 + 중앙 앱 컬럼)
+│  │  ├─ ui/                     Card, Badge, Chip, Notice, Icon, ScoreBar
+│  │  ├─ saju/                   SajuForm, ResultView, SajuTable, GanjiChip, ManseryeokView
+│  │  ├─ charts/                 OhaengRadar, OhaengBars, FortuneCurve (직접 그린 SVG)
+│  │  └─ illust/                 ZodiacAvatar
 │  │
 │  ├─ lib/
 │  │  ├─ manseryeok/             ① 계산: 음양력 변환, 시간 보정, 절기, 4주, 대운
-│  │  ├─ analysis/               ② 분석: 오행 점수, 십신, 신강약, 합충, 신살
-│  │  └─ interpret/              ③ 풀이: 분석 결과 → content 문장 조합
+│  │  ├─ analysis/               ② 분석: 십신, 12운성, 오행, 신강약, 합충, 지수
+│  │  ├─ interpret/              ③ 풀이: 분석 결과 → content 문장
+│  │  └─ query.ts                입력값 ↔ URL 파라미터
 │  │
-│  ├─ styles/                    tokens.css (오행 색, 카드, 타이포)
-│  └─ types/                     Saju, Pillar, Analysis 타입
+│  ├─ styles/globals.css         디자인 토큰 (오행 색, 카드, 남색)
+│  └─ types/                     외부 라이브러리 타입 선언
 │
-├─ content/                      풀이 문장 DB (코드와 분리, 비개발자 편집)
-│  ├─ ilgan/                     일간 10종 기본 성향
-│  ├─ ilju/                      60일주 상세
-│  ├─ sipsin/                    십신 과다·부족·부재
-│  ├─ ohaeng/                    오행 과다·부족
-│  ├─ daeun/                     대운 흐름
-│  ├─ sinsal/                    신살
-│  └─ themes/                    재물·애정·건강·직업
+├─ content/                      풀이 문장 (코드와 분리)
+│  ├─ ilgan/                     일간 10종
+│  ├─ ohaeng/                    오행 과다·부족·개운법
+│  ├─ sipsin/                    십신 10종, 신강/중화/신약
+│  ├─ daeun/                     대운·세운 십신별 흐름
+│  └─ themes/                    재물·애정·직업·건강 구간별 문장
 │
-├─ data/
-│  ├─ solar-terms/               절기 절입 시각 테이블 (1900–2100, KASI 기준)
-│  ├─ locations/                 출생지 경도 (시간 보정용)
-│  └─ fixtures/                  만세력 검증용 정답 데이터
-│
-├─ tests/
-│  ├─ manseryeok/                절기·자시·서머타임·윤달 경계 테스트
-│  ├─ analysis/
-│  └─ interpret/
-│
-└─ scripts/                      절기 테이블 생성, 콘텐츠 누락 검사 등
+├─ data/locations/               출생지 경도 (시간 보정용)
+├─ tests/                        manseryeok(경계 케이스), analysis
+└─ scripts/illust/               일러스트 생성 스크립트
 ```
 
 ## 데이터 흐름
 
 ```
-입력 폼 (app/saju) ─▶ api/saju ─▶ lib/manseryeok ─▶ lib/analysis ─▶ lib/interpret ─▶ 결과 카드 (app/saju/result)
-                                                                        ▲
-                                                                   content/*
+입력 폼 ─▶ URL ─▶ lib/manseryeok ─▶ lib/analysis ─▶ lib/interpret ─▶ 결과 카드
+                  (lunar-javascript,                      ▲
+                   korean-lunar-calendar,            content/*
+                   Intl Asia/Seoul 시간대 이력)
 ```

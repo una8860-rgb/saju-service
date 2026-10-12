@@ -1,0 +1,15 @@
+# 의존성·빌드 결과
+node_modules/
+.next/
+out/
+
+# 환경변수 (API 키)
+.env*
+
+# 타사 저작물 레퍼런스 캡처 — 로컬 참고용, 공개 저장소에 올리지 않음
+docs/design/reference/
+
+# OS/에디터
+.DS_Store
+Thumbs.db
+__pycache__/

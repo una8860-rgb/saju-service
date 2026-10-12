@@ -1,0 +1,30 @@
+{
+  "_comment": "출생지 경도 보정용. 보정(분) = (경도 - 135) × 4. 좌표는 각 시청/도청 소재지 기준(소수 3자리 ≈ 1초 미만 오차).",
+  "standardMeridian": 135,
+  "default": "seoul",
+  "cities": [
+    { "id": "seoul",     "sido": "서울",  "name": "서울",   "lng": 126.978, "lat": 37.566 },
+    { "id": "incheon",   "sido": "인천",  "name": "인천",   "lng": 126.705, "lat": 37.456 },
+    { "id": "suwon",     "sido": "경기",  "name": "수원",   "lng": 127.029, "lat": 37.263 },
+    { "id": "chuncheon", "sido": "강원",  "name": "춘천",   "lng": 127.730, "lat": 37.881 },
+    { "id": "wonju",     "sido": "강원",  "name": "원주",   "lng": 127.920, "lat": 37.342 },
+    { "id": "gangneung", "sido": "강원",  "name": "강릉",   "lng": 128.876, "lat": 37.752 },
+    { "id": "cheongju",  "sido": "충북",  "name": "청주",   "lng": 127.489, "lat": 36.642 },
+    { "id": "cheonan",   "sido": "충남",  "name": "천안",   "lng": 127.114, "lat": 36.815 },
+    { "id": "daejeon",   "sido": "대전",  "name": "대전",   "lng": 127.385, "lat": 36.351 },
+    { "id": "sejong",    "sido": "세종",  "name": "세종",   "lng": 127.289, "lat": 36.480 },
+    { "id": "jeonju",    "sido": "전북",  "name": "전주",   "lng": 127.148, "lat": 35.824 },
+    { "id": "gwangju",   "sido": "광주",  "name": "광주",   "lng": 126.851, "lat": 35.160 },
+    { "id": "mokpo",     "sido": "전남",  "name": "목포",   "lng": 126.392, "lat": 34.812 },
+    { "id": "yeosu",     "sido": "전남",  "name": "여수",   "lng": 127.662, "lat": 34.760 },
+    { "id": "daegu",     "sido": "대구",  "name": "대구",   "lng": 128.601, "lat": 35.871 },
+    { "id": "andong",    "sido": "경북",  "name": "안동",   "lng": 128.729, "lat": 36.568 },
+    { "id": "pohang",    "sido": "경북",  "name": "포항",   "lng": 129.343, "lat": 36.019 },
+    { "id": "ulsan",     "sido": "울산",  "name": "울산",   "lng": 129.311, "lat": 35.539 },
+    { "id": "busan",     "sido": "부산",  "name": "부산",   "lng": 129.075, "lat": 35.180 },
+    { "id": "changwon",  "sido": "경남",  "name": "창원",   "lng": 128.682, "lat": 35.228 },
+    { "id": "jinju",     "sido": "경남",  "name": "진주",   "lng": 128.108, "lat": 35.180 },
+    { "id": "jeju",      "sido": "제주",  "name": "제주",   "lng": 126.531, "lat": 33.500 },
+    { "id": "seogwipo",  "sido": "제주",  "name": "서귀포", "lng": 126.560, "lat": 33.254 }
+  ]
+}
